@@ -27,3 +27,11 @@ export function verifyRefreshToken(token:string){
         tokenVersion:number
     }
 }
+
+export function verifyAcessToken(token:string){
+    return jwt.verify(token,process.env.JWT_ACCESS_SECRET!) as unknown as {
+        sub:string;
+        role: "user" | "admin";
+        tokenVersion: number;
+    }
+}
